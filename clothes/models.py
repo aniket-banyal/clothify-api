@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 
 
@@ -144,6 +145,7 @@ class Cloth(models.Model):
     gender = models.CharField(max_length=15, choices=GENDER_CHOICES)
     color = models.CharField(max_length=20, choices=COLOR_CHOICES)
     category = models.CharField(max_length=30, choices=CATEGORY_CHOICES)
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name_plural = "clothes"

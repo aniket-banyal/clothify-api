@@ -11,4 +11,4 @@ class ClothSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Cloth
-        fields = ('name', 'description', 'retail_price', 'sell_price', 'size', 'gender', 'color', 'category')
+        fields = ('name', 'description', 'retail_price', 'sell_price', 'size', 'gender', 'color', 'category', 'owner')
