@@ -1,11 +1,18 @@
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import generics
 from rest_framework.permissions import AllowAny
-from clothes.models import Cloth
 
+from clothes.models import Cloth
 from clothes.serializers import ClothSerializer
 
+from .filters import ClothFilter
 
-class Clothes(generics.ListAPIView):
+
+class ClothesList(generics.ListAPIView):
     permission_classes = [AllowAny]
-    serializer_class = ClothSerializer
+
     queryset = Cloth.objects.all()
+    serializer_class = ClothSerializer
+
+    filter_backends = [DjangoFilterBackend]
+    filterset_class = ClothFilter
