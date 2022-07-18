@@ -1,8 +1,11 @@
 from django.conf import settings
+from django.core.validators import MinValueValidator
 from django.db import models
 
 
 class Cloth(models.Model):
+    MIN_PRICE = 1
+
     EXTRA_EXTRA_SMALL = 'XXS'
     EXTRA_SMALL = 'XS'
     SMALL = 'S'
@@ -139,8 +142,8 @@ class Cloth(models.Model):
 
     name = models.CharField(max_length=200)
     description = models.TextField()
-    retail_price = models.PositiveIntegerField()
-    sell_price = models.PositiveIntegerField()
+    retail_price = models.PositiveIntegerField(validators=[MinValueValidator(MIN_PRICE)])
+    sell_price = models.PositiveIntegerField(validators=[MinValueValidator(MIN_PRICE)])
     size = models.CharField(max_length=10, choices=SIZE_CHOICES)
     gender = models.CharField(max_length=15, choices=GENDER_CHOICES)
     color = models.CharField(max_length=20, choices=COLOR_CHOICES)
