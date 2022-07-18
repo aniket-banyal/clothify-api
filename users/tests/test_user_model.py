@@ -42,7 +42,7 @@ class TestUserModel:
             password=password
         )
 
-        with pytest.raises(IntegrityError):
+        with pytest.raises(IntegrityError, match=r'UNIQUE constraint failed: [a-zA-Z_]+.email'):
             make_user(
                 first_name=first_name,
                 last_name=last_name,
