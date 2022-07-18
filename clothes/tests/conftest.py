@@ -11,7 +11,8 @@ def user_instance() -> User:
     return User.objects.create(
         email='a@a.com',
         first_name='A',
-        last_name='B'
+        last_name='B',
+        password='password'
     )
 
 
