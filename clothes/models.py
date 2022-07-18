@@ -83,7 +83,7 @@ class Cloth(models.Model):
     TSHIRT = 'Tshirt'
     WAISTCOAT = 'Waistcoat'
 
-    MEN_CATEGORY_CHOICES = set([
+    MEN_CATEGORY_CHOICES = [
         (BLAZER, BLAZER),
         (CARDIGAN, CARDIGAN),
         (CASUAL_TROUSER, CASUAL_TROUSER),
@@ -99,7 +99,7 @@ class Cloth(models.Model):
         (SUIT, SUIT),
         (TSHIRT, TSHIRT),
         (WAISTCOAT, WAISTCOAT),
-    ])
+    ]
 
     COAT = 'Coat'
     DRESS = 'Dress'
@@ -117,7 +117,7 @@ class Cloth(models.Model):
     TOPS = 'Tops'
     TSHIRT = 'Tshirt'
 
-    WOMEN_CATEGORY_CHOICES = set([
+    WOMEN_CATEGORY_CHOICES = [
         (COAT, COAT),
         (DRESS, DRESS),
         (HOODIE, HOODIE),
@@ -133,9 +133,9 @@ class Cloth(models.Model):
         (SWEATER, SWEATER),
         (TOPS, TOPS),
         (TSHIRT, TSHIRT),
-    ])
+    ]
 
-    CATEGORY_CHOICES = MEN_CATEGORY_CHOICES.union(WOMEN_CATEGORY_CHOICES)
+    CATEGORY_CHOICES = list(dict.fromkeys(MEN_CATEGORY_CHOICES + WOMEN_CATEGORY_CHOICES))
 
     name = models.CharField(max_length=200)
     description = models.TextField()
