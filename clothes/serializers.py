@@ -11,6 +11,18 @@ class ClothSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Cloth
+        fields = ('id', 'name', 'retail_price', 'sell_price', 'gender')
+
+
+class ClothDetailSerializer(serializers.ModelSerializer):
+
+    size = serializers.CharField(source='get_size_display')
+    gender = serializers.CharField(source='get_gender_display')
+    color = serializers.CharField(source='get_color_display')
+    category = serializers.CharField(source='get_category_display')
+
+    class Meta:
+        model = Cloth
         fields = ('name', 'description', 'retail_price', 'sell_price', 'size', 'gender', 'color', 'category', 'owner')
 
 
