@@ -149,9 +149,18 @@ class Cloth(models.Model):
     color = models.CharField(max_length=20, choices=COLOR_CHOICES)
     category = models.CharField(max_length=30, choices=CATEGORY_CHOICES)
     owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    cover_img_url = models.URLField()
 
     class Meta:
         verbose_name_plural = "clothes"
 
     def __str__(self) -> str:
         return self.name
+
+
+class Image(models.Model):
+    cloth = models.ForeignKey(Cloth, on_delete=models.CASCADE)
+    url = models.URLField()
+
+    def __str__(self):
+        return self.url
