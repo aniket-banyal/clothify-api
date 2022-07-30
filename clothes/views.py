@@ -1,7 +1,7 @@
-from core.permissions import IsAuthenticatedOrReadOnly
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import generics
 from rest_framework.parsers import FormParser, MultiPartParser
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 from clothes.models import Cloth
 from clothes.serializers import ClothCreateSerializer, ClothSerializer
