@@ -9,22 +9,20 @@ class ImageSerializer(serializers.ModelSerializer):
         fields = ('url',)
 
 
-class CategorySerializer(serializers.Serializer):
+class CategorySerializer(serializers.ModelSerializer):
     name = serializers.CharField(source='get_name_display')
-    gender = serializers.CharField(source='get_gender_display')
 
     class Meta:
         model = Category
-        fields = ('name', 'gender')
+        fields = ('id', 'name', 'gender')
 
 
-class CategoryDetailSerializer(serializers.Serializer):
+class CategoryDetailSerializer(serializers.ModelSerializer):
     name = serializers.CharField(source='get_name_display')
-    gender = serializers.CharField(source='get_gender_display')
 
     class Meta:
         model = Category
-        fields = ('name', 'gender')  # add image also
+        fields = ('id', 'name', 'gender')  # add image also
 
 
 class ClothSerializer(serializers.ModelSerializer):

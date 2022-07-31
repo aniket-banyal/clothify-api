@@ -41,3 +41,6 @@ class CategoryList(generics.ListAPIView):
     queryset = Category.objects.all()
 
     serializer_class = CategoryDetailSerializer
+
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['gender']

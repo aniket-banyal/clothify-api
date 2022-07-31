@@ -1,3 +1,4 @@
+from django_filters import CharFilter
 from django_filters.rest_framework import (BaseInFilter, BaseRangeFilter,
                                            FilterSet, NumberFilter)
 
@@ -13,7 +14,8 @@ class ClothFilter(FilterSet):
     color = BaseInFilter(field_name='color', lookup_expr='in')
     category = BaseInFilter(field_name='category', lookup_expr='in')
     size = BaseInFilter(field_name='size', lookup_expr='in')
+    gender = CharFilter(field_name='category__gender', lookup_expr='iexact')
 
     class Meta:
         model = Cloth
-        fields = ('category__gender', 'owner')
+        fields = ('gender', 'owner')
