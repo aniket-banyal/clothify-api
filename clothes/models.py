@@ -3,71 +3,13 @@ from django.core.validators import MinValueValidator
 from django.db import models
 
 
-class Cloth(models.Model):
-    MIN_PRICE = 1
-
-    EXTRA_EXTRA_SMALL = 'XXS'
-    EXTRA_SMALL = 'XS'
-    SMALL = 'S'
-    MEDIUM = 'M'
-    LARGE = 'L'
-    EXTRA_LARGE = 'XL'
-    EXTRA_EXTRA_LARGE = 'XXL'
-
-    SIZE_CHOICES = [
-        (EXTRA_EXTRA_SMALL, EXTRA_EXTRA_SMALL),
-        (EXTRA_SMALL, EXTRA_SMALL),
-        (SMALL, SMALL),
-        (MEDIUM, MEDIUM),
-        (LARGE, LARGE),
-        (EXTRA_LARGE, EXTRA_LARGE),
-        (EXTRA_EXTRA_LARGE, EXTRA_EXTRA_LARGE),
-    ]
-
+class Category(models.Model):
     MEN = 'M'
     WOMEN = 'W'
 
     GENDER_CHOICES = [
         (MEN, 'Men'),
         (WOMEN, 'Women'),
-    ]
-
-    BEIGE = 'Beige'
-    BLACK = 'Black'
-    BLUE = 'Blue'
-    BROWN = 'Brown'
-    GREEN = 'Green'
-    GREY = 'Grey'
-    INDIGO = 'Indigo'
-    MAROON = 'Maroon'
-    MULTI = 'Multi'
-    NAVY = 'Navy'
-    NUDE = 'Nude'
-    ORANGE = 'Orange'
-    PINK = 'Pink'
-    PURPLE = 'Purple'
-    RED = 'Red'
-    WHITE = 'White'
-    YELLOW = 'Yellow'
-
-    COLOR_CHOICES = [
-        (BEIGE, BEIGE),
-        (BLACK, BLACK),
-        (BLUE, BLUE),
-        (BROWN, BROWN),
-        (GREEN, GREEN),
-        (GREY, GREY),
-        (INDIGO, INDIGO),
-        (MAROON, MAROON),
-        (MULTI, MULTI),
-        (NAVY, NAVY),
-        (NUDE, NUDE),
-        (ORANGE, ORANGE),
-        (PINK, PINK),
-        (PURPLE, PURPLE),
-        (RED, RED),
-        (WHITE, WHITE),
-        (YELLOW, YELLOW),
     ]
 
     BLAZER = 'Blazer'
@@ -138,16 +80,84 @@ class Cloth(models.Model):
         (TSHIRT, TSHIRT),
     ]
 
-    CATEGORY_CHOICES = list(dict.fromkeys(MEN_CATEGORY_CHOICES + WOMEN_CATEGORY_CHOICES))
+    NAME_CHOICES = list(dict.fromkeys(MEN_CATEGORY_CHOICES + WOMEN_CATEGORY_CHOICES))
+
+    name = models.CharField(max_length=30, choices=NAME_CHOICES)
+    gender = models.CharField(max_length=15, choices=GENDER_CHOICES)
+
+    class Meta:
+        verbose_name_plural = "categories"
+
+    def __str__(self):
+        return f'{self.name} - {self.gender}'
+
+
+class Cloth(models.Model):
+    MIN_PRICE = 1
+
+    EXTRA_EXTRA_SMALL = 'XXS'
+    EXTRA_SMALL = 'XS'
+    SMALL = 'S'
+    MEDIUM = 'M'
+    LARGE = 'L'
+    EXTRA_LARGE = 'XL'
+    EXTRA_EXTRA_LARGE = 'XXL'
+
+    SIZE_CHOICES = [
+        (EXTRA_EXTRA_SMALL, EXTRA_EXTRA_SMALL),
+        (EXTRA_SMALL, EXTRA_SMALL),
+        (SMALL, SMALL),
+        (MEDIUM, MEDIUM),
+        (LARGE, LARGE),
+        (EXTRA_LARGE, EXTRA_LARGE),
+        (EXTRA_EXTRA_LARGE, EXTRA_EXTRA_LARGE),
+    ]
+
+    BEIGE = 'Beige'
+    BLACK = 'Black'
+    BLUE = 'Blue'
+    BROWN = 'Brown'
+    GREEN = 'Green'
+    GREY = 'Grey'
+    INDIGO = 'Indigo'
+    MAROON = 'Maroon'
+    MULTI = 'Multi'
+    NAVY = 'Navy'
+    NUDE = 'Nude'
+    ORANGE = 'Orange'
+    PINK = 'Pink'
+    PURPLE = 'Purple'
+    RED = 'Red'
+    WHITE = 'White'
+    YELLOW = 'Yellow'
+
+    COLOR_CHOICES = [
+        (BEIGE, BEIGE),
+        (BLACK, BLACK),
+        (BLUE, BLUE),
+        (BROWN, BROWN),
+        (GREEN, GREEN),
+        (GREY, GREY),
+        (INDIGO, INDIGO),
+        (MAROON, MAROON),
+        (MULTI, MULTI),
+        (NAVY, NAVY),
+        (NUDE, NUDE),
+        (ORANGE, ORANGE),
+        (PINK, PINK),
+        (PURPLE, PURPLE),
+        (RED, RED),
+        (WHITE, WHITE),
+        (YELLOW, YELLOW),
+    ]
 
     name = models.CharField(max_length=200)
     description = models.TextField()
     retail_price = models.PositiveIntegerField(validators=[MinValueValidator(MIN_PRICE)])
     sell_price = models.PositiveIntegerField(validators=[MinValueValidator(MIN_PRICE)])
     size = models.CharField(max_length=10, choices=SIZE_CHOICES)
-    gender = models.CharField(max_length=15, choices=GENDER_CHOICES)
     color = models.CharField(max_length=20, choices=COLOR_CHOICES)
-    category = models.CharField(max_length=30, choices=CATEGORY_CHOICES)
+    category = models.ForeignKey(Category, on_delete=models.PROTECT)
     owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     cover_img_url = models.URLField()
 

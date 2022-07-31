@@ -3,8 +3,9 @@ from rest_framework import generics
 from rest_framework.parsers import FormParser, MultiPartParser
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
-from clothes.models import Cloth
-from clothes.serializers import ClothCreateSerializer, ClothSerializer
+from clothes.models import Category, Cloth
+from clothes.serializers import (CategoryDetailSerializer,
+                                 ClothCreateSerializer, ClothSerializer)
 
 from .filters import ClothFilter
 from .utils import uploadImage
@@ -32,3 +33,11 @@ class ClothesList(generics.ListCreateAPIView):
         cover_img_url = uploadImage(image=image, name=name)
 
         serializer.save(owner=self.request.user, cover_img_url=cover_img_url)
+
+
+class CategoryList(generics.ListAPIView):
+    permission_classes = [IsAuthenticatedOrReadOnly]
+
+    queryset = Category.objects.all()
+
+    serializer_class = CategoryDetailSerializer

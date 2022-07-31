@@ -16,4 +16,4 @@ class ClothFilter(FilterSet):
 
     class Meta:
         model = Cloth
-        fields = ('gender', 'owner')
+        fields = ('category__gender', 'owner')
