@@ -9,6 +9,7 @@ from clothes.serializers import (CategoryDetailSerializer,
 
 from .filters import ClothFilter
 from .utils import uploadImage
+from rest_framework.response import Response
 
 
 class ClothesList(generics.ListCreateAPIView):
@@ -44,3 +45,11 @@ class CategoryList(generics.ListAPIView):
 
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['gender']
+
+
+class ColorList(generics.ListAPIView):
+    permission_classes = [IsAuthenticatedOrReadOnly]
+
+    def list(self, request, *args, **kwargs):
+        colors = [color_choices[0] for color_choices in Cloth.COLOR_CHOICES]
+        return Response(data=colors)
