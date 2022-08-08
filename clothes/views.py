@@ -1,7 +1,9 @@
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import generics
+from rest_framework.pagination import PageNumberPagination
 from rest_framework.parsers import FormParser, MultiPartParser
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
+from rest_framework.response import Response
 
 from clothes.models import Category, Cloth
 from clothes.serializers import (CategoryDetailSerializer,
@@ -9,7 +11,10 @@ from clothes.serializers import (CategoryDetailSerializer,
 
 from .filters import ClothFilter
 from .utils import uploadImage
-from rest_framework.response import Response
+
+
+class CustomPagination(PageNumberPagination):
+    page_size_query_param = "limit"
 
 
 class ClothesList(generics.ListCreateAPIView):
@@ -22,15 +27,19 @@ class ClothesList(generics.ListCreateAPIView):
     filter_backends = [DjangoFilterBackend]
     filterset_class = ClothFilter
 
+    pagination_class = CustomPagination
+
     def get_serializer_class(self):
         method = self.request.method
-        if method == 'GET':
+        if method == "GET":
             return ClothSerializer
         return ClothCreateSerializer
 
     def perform_create(self, serializer):
-        image = self.request.data['cover_img']
-        name: str = image.name + '_'.join([str(value) for value in serializer.validated_data.values()])
+        image = self.request.data["cover_img"]
+        name: str = image.name + "_".join(
+            [str(value) for value in serializer.validated_data.values()]
+        )
         cover_img_url = uploadImage(image=image, name=name)
 
         serializer.save(owner=self.request.user, cover_img_url=cover_img_url)
@@ -44,7 +53,7 @@ class CategoryList(generics.ListAPIView):
     serializer_class = CategoryDetailSerializer
 
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['gender']
+    filterset_fields = ["gender"]
 
 
 class ColorList(generics.ListAPIView):
