@@ -7,21 +7,28 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Cloth',
+            name="Cloth",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=200)),
-                ('description', models.TextField()),
-                ('retail_price', models.PositiveIntegerField()),
-                ('sell_price', models.PositiveIntegerField()),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=200)),
+                ("description", models.TextField()),
+                ("retail_price", models.PositiveIntegerField()),
+                ("sell_price", models.PositiveIntegerField()),
             ],
             options={
-                'verbose_name_plural': 'clothes',
+                "verbose_name_plural": "clothes",
             },
         ),
     ]

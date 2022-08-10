@@ -1,8 +1,9 @@
-
 def setup_cloudinary() -> None:
     from dotenv import load_dotenv
+
     load_dotenv()
     import cloudinary
+
     config = cloudinary.config(secure=True)
 
 

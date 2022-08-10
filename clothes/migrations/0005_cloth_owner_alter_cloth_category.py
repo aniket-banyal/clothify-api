@@ -9,19 +9,51 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('clothes', '0004_cloth_category_alter_cloth_gender'),
+        ("clothes", "0004_cloth_category_alter_cloth_gender"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='cloth',
-            name='owner',
-            field=models.ForeignKey(default=2, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL),
+            model_name="cloth",
+            name="owner",
+            field=models.ForeignKey(
+                default=2,
+                on_delete=django.db.models.deletion.CASCADE,
+                to=settings.AUTH_USER_MODEL,
+            ),
             preserve_default=False,
         ),
         migrations.AlterField(
-            model_name='cloth',
-            name='category',
-            field=models.CharField(choices=[('Pullover', 'Pullover'), ('Tops', 'Tops'), ('Cardigan', 'Cardigan'), ('Casual Trouser', 'Casual Trouser'), ('Sweater', 'Sweater'), ('Polo shirt', 'Polo shirt'), ('Shrug', 'Shrug'), ('Waistcoat', 'Waistcoat'), ('Coat', 'Coat'), ('Dress', 'Dress'), ('Sheath dress', 'Sheath dress'), ('Shorts', 'Shorts'), ('Saree', 'Saree'), ('Jacket', 'Jacket'), ('Sleeveless shirt', 'Sleeveless shirt'), ('Skirt', 'Skirt'), ('Shirt', 'Shirt'), ('Blazer', 'Blazer'), ('Tshirt', 'Tshirt'), ('Hoodie', 'Hoodie'), ('Suit', 'Suit'), ('Kurta', 'Kurta'), ('Jeans', 'Jeans'), ('Formal Trouser', 'Formal Trouser')], max_length=30),
+            model_name="cloth",
+            name="category",
+            field=models.CharField(
+                choices=[
+                    ("Pullover", "Pullover"),
+                    ("Tops", "Tops"),
+                    ("Cardigan", "Cardigan"),
+                    ("Casual Trouser", "Casual Trouser"),
+                    ("Sweater", "Sweater"),
+                    ("Polo shirt", "Polo shirt"),
+                    ("Shrug", "Shrug"),
+                    ("Waistcoat", "Waistcoat"),
+                    ("Coat", "Coat"),
+                    ("Dress", "Dress"),
+                    ("Sheath dress", "Sheath dress"),
+                    ("Shorts", "Shorts"),
+                    ("Saree", "Saree"),
+                    ("Jacket", "Jacket"),
+                    ("Sleeveless shirt", "Sleeveless shirt"),
+                    ("Skirt", "Skirt"),
+                    ("Shirt", "Shirt"),
+                    ("Blazer", "Blazer"),
+                    ("Tshirt", "Tshirt"),
+                    ("Hoodie", "Hoodie"),
+                    ("Suit", "Suit"),
+                    ("Kurta", "Kurta"),
+                    ("Jeans", "Jeans"),
+                    ("Formal Trouser", "Formal Trouser"),
+                ],
+                max_length=30,
+            ),
         ),
     ]

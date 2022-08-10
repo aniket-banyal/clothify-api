@@ -6,20 +6,36 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('clothes', '0001_initial'),
+        ("clothes", "0001_initial"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='cloth',
-            name='gender',
-            field=models.CharField(choices=[('M', 'Men'), ('W', 'Women'), ('O', 'Others')], default='W', max_length=15),
+            model_name="cloth",
+            name="gender",
+            field=models.CharField(
+                choices=[("M", "Men"), ("W", "Women"), ("O", "Others")],
+                default="W",
+                max_length=15,
+            ),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='cloth',
-            name='size',
-            field=models.CharField(choices=[('XXS', 'XXS'), ('XS', 'XS'), ('S', 'S'), ('M', 'M'), ('L', 'L'), ('XL', 'XL'), ('XXL', 'XXL')], default='M', max_length=10),
+            model_name="cloth",
+            name="size",
+            field=models.CharField(
+                choices=[
+                    ("XXS", "XXS"),
+                    ("XS", "XS"),
+                    ("S", "S"),
+                    ("M", "M"),
+                    ("L", "L"),
+                    ("XL", "XL"),
+                    ("XXL", "XXL"),
+                ],
+                default="M",
+                max_length=10,
+            ),
             preserve_default=False,
         ),
     ]

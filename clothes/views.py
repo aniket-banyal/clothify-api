@@ -6,8 +6,11 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
 
 from clothes.models import Category, Cloth
-from clothes.serializers import (CategoryDetailSerializer,
-                                 ClothCreateSerializer, ClothSerializer)
+from clothes.serializers import (
+    CategoryDetailSerializer,
+    ClothCreateSerializer,
+    ClothSerializer,
+)
 
 from .filters import ClothFilter
 from .utils import uploadImage

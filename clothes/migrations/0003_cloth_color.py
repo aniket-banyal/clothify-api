@@ -6,14 +6,36 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('clothes', '0002_cloth_gender_cloth_size'),
+        ("clothes", "0002_cloth_gender_cloth_size"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='cloth',
-            name='color',
-            field=models.CharField(choices=[('Beige', 'Beige'), ('Black', 'Black'), ('Blue', 'Blue'), ('Brown', 'Brown'), ('Green', 'Green'), ('Grey', 'Grey'), ('Indigo', 'Indigo'), ('Maroon', 'Maroon'), ('Multi', 'Multi'), ('Navy', 'Navy'), ('Nude', 'Nude'), ('Orange', 'Orange'), ('Pink', 'Pink'), ('Purple', 'Purple'), ('Red', 'Red'), ('White', 'White'), ('Yellow', 'Yellow')], default='Blue', max_length=20),
+            model_name="cloth",
+            name="color",
+            field=models.CharField(
+                choices=[
+                    ("Beige", "Beige"),
+                    ("Black", "Black"),
+                    ("Blue", "Blue"),
+                    ("Brown", "Brown"),
+                    ("Green", "Green"),
+                    ("Grey", "Grey"),
+                    ("Indigo", "Indigo"),
+                    ("Maroon", "Maroon"),
+                    ("Multi", "Multi"),
+                    ("Navy", "Navy"),
+                    ("Nude", "Nude"),
+                    ("Orange", "Orange"),
+                    ("Pink", "Pink"),
+                    ("Purple", "Purple"),
+                    ("Red", "Red"),
+                    ("White", "White"),
+                    ("Yellow", "Yellow"),
+                ],
+                default="Blue",
+                max_length=20,
+            ),
             preserve_default=False,
         ),
     ]

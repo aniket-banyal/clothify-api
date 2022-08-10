@@ -6,23 +6,23 @@ from .models import Category, Cloth, Image
 class ImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = Image
-        fields = ('url',)
+        fields = ("url",)
 
 
 class CategorySerializer(serializers.ModelSerializer):
-    name = serializers.CharField(source='get_name_display')
+    name = serializers.CharField(source="get_name_display")
 
     class Meta:
         model = Category
-        fields = ('id', 'name', 'gender')
+        fields = ("id", "name", "gender")
 
 
 class CategoryDetailSerializer(serializers.ModelSerializer):
-    name = serializers.CharField(source='get_name_display')
+    name = serializers.CharField(source="get_name_display")
 
     class Meta:
         model = Category
-        fields = ('id', 'name', 'gender')  # add image also
+        fields = ("id", "name", "gender")  # add image also
 
 
 class ClothSerializer(serializers.ModelSerializer):
@@ -30,19 +30,35 @@ class ClothSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Cloth
-        fields = ('id', 'name', 'retail_price', 'sell_price', 'cover_img_url', 'category')
+        fields = (
+            "id",
+            "name",
+            "retail_price",
+            "sell_price",
+            "cover_img_url",
+            "category",
+        )
 
 
 class ClothDetailSerializer(serializers.ModelSerializer):
 
-    size = serializers.CharField(source='get_size_display')
-    color = serializers.CharField(source='get_color_display')
+    size = serializers.CharField(source="get_size_display")
+    color = serializers.CharField(source="get_color_display")
     category = CategorySerializer()
     images = serializers.SerializerMethodField()
 
     class Meta:
         model = Cloth
-        fields = ('name', 'description', 'retail_price', 'sell_price', 'size', 'color', 'category', 'owner')
+        fields = (
+            "name",
+            "description",
+            "retail_price",
+            "sell_price",
+            "size",
+            "color",
+            "category",
+            "owner",
+        )
 
     def get_images(self, cloth: Cloth):
         images = [image.url for image in cloth.image_set.all()]
@@ -50,8 +66,16 @@ class ClothDetailSerializer(serializers.ModelSerializer):
 
 
 class ClothCreateSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = Cloth
-        fields = ('name', 'description', 'retail_price', 'sell_price', 'size', 'color', 'category', 'cover_img_url')
-        read_only_fields = ('cover_img_url',)
+        fields = (
+            "name",
+            "description",
+            "retail_price",
+            "sell_price",
+            "size",
+            "color",
+            "category",
+            "cover_img_url",
+        )
+        read_only_fields = ("cover_img_url",)
