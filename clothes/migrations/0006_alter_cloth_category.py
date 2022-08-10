@@ -6,13 +6,41 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('clothes', '0005_cloth_owner_alter_cloth_category'),
+        ("clothes", "0005_cloth_owner_alter_cloth_category"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='cloth',
-            name='category',
-            field=models.CharField(choices=[('Casual Trouser', 'Casual Trouser'), ('Tops', 'Tops'), ('Sleeveless shirt', 'Sleeveless shirt'), ('Waistcoat', 'Waistcoat'), ('Dress', 'Dress'), ('Kurta', 'Kurta'), ('Skirt', 'Skirt'), ('Jeans', 'Jeans'), ('Blazer', 'Blazer'), ('Cardigan', 'Cardigan'), ('Polo shirt', 'Polo shirt'), ('Sweater', 'Sweater'), ('Jacket', 'Jacket'), ('Sheath dress', 'Sheath dress'), ('Shorts', 'Shorts'), ('Pullover', 'Pullover'), ('Shrug', 'Shrug'), ('Suit', 'Suit'), ('Saree', 'Saree'), ('Formal Trouser', 'Formal Trouser'), ('Tshirt', 'Tshirt'), ('Coat', 'Coat'), ('Hoodie', 'Hoodie'), ('Shirt', 'Shirt')], max_length=30),
+            model_name="cloth",
+            name="category",
+            field=models.CharField(
+                choices=[
+                    ("Casual Trouser", "Casual Trouser"),
+                    ("Tops", "Tops"),
+                    ("Sleeveless shirt", "Sleeveless shirt"),
+                    ("Waistcoat", "Waistcoat"),
+                    ("Dress", "Dress"),
+                    ("Kurta", "Kurta"),
+                    ("Skirt", "Skirt"),
+                    ("Jeans", "Jeans"),
+                    ("Blazer", "Blazer"),
+                    ("Cardigan", "Cardigan"),
+                    ("Polo shirt", "Polo shirt"),
+                    ("Sweater", "Sweater"),
+                    ("Jacket", "Jacket"),
+                    ("Sheath dress", "Sheath dress"),
+                    ("Shorts", "Shorts"),
+                    ("Pullover", "Pullover"),
+                    ("Shrug", "Shrug"),
+                    ("Suit", "Suit"),
+                    ("Saree", "Saree"),
+                    ("Formal Trouser", "Formal Trouser"),
+                    ("Tshirt", "Tshirt"),
+                    ("Coat", "Coat"),
+                    ("Hoodie", "Hoodie"),
+                    ("Shirt", "Shirt"),
+                ],
+                max_length=30,
+            ),
         ),
     ]

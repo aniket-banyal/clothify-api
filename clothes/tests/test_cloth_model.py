@@ -4,15 +4,44 @@ from clothes.models import Cloth
 
 @pytest.mark.django_db
 class TestClothModel:
-
     @pytest.mark.parametrize(
         "name, description, retail_price, sell_price, size, gender, color, category",
         [
-            ('Shirt', 'Red shirt with checkmarks', 1000, 500, 'M', 'M', 'White', 'Shirt'),
-            ('Kurta', 'Casual Kurta in excellent condition', 800, 200, 'L', 'W', 'Yellow', 'Kurta')
-        ]
+            (
+                "Shirt",
+                "Red shirt with checkmarks",
+                1000,
+                500,
+                "M",
+                "M",
+                "White",
+                "Shirt",
+            ),
+            (
+                "Kurta",
+                "Casual Kurta in excellent condition",
+                800,
+                200,
+                "L",
+                "W",
+                "Yellow",
+                "Kurta",
+            ),
+        ],
     )
-    def test_cloth_model_insert_data(self, make_cloth, user_instance, name, description, retail_price, sell_price, size, gender, color, category):
+    def test_cloth_model_insert_data(
+        self,
+        make_cloth,
+        user_instance,
+        name,
+        description,
+        retail_price,
+        sell_price,
+        size,
+        gender,
+        color,
+        category,
+    ):
         owner = user_instance
         cloth: Cloth = make_cloth(
             name=name,
@@ -23,7 +52,7 @@ class TestClothModel:
             gender=gender,
             color=color,
             category=category,
-            owner=owner
+            owner=owner,
         )
 
         assert cloth.name == name

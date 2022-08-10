@@ -7,21 +7,67 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('clothes', '0010_cloth_cover_img_url'),
+        ("clothes", "0010_cloth_cover_img_url"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Category',
+            name="Category",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(choices=[('Blazer', 'Blazer'), ('Cardigan', 'Cardigan'), ('Casual Trouser', 'Casual Trouser'), ('Formal Trouser', 'Formal Trouser'), ('Hoodie', 'Hoodie'), ('Jacket', 'Jacket'), ('Jeans', 'Jeans'), ('Polo shirt', 'Polo shirt'), ('Pullover', 'Pullover'), ('Shirt', 'Shirt'), ('Shorts', 'Shorts'), ('Sleeveless shirt', 'Sleeveless shirt'), ('Suit', 'Suit'), ('Tshirt', 'Tshirt'), ('Waistcoat', 'Waistcoat'), ('Coat', 'Coat'), ('Dress', 'Dress'), ('Kurta', 'Kurta'), ('Saree', 'Saree'), ('Sheath dress', 'Sheath dress'), ('Shrug', 'Shrug'), ('Skirt', 'Skirt'), ('Sweater', 'Sweater'), ('Tops', 'Tops')], max_length=30)),
-                ('gender', models.CharField(choices=[('M', 'Men'), ('W', 'Women')], max_length=15)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "name",
+                    models.CharField(
+                        choices=[
+                            ("Blazer", "Blazer"),
+                            ("Cardigan", "Cardigan"),
+                            ("Casual Trouser", "Casual Trouser"),
+                            ("Formal Trouser", "Formal Trouser"),
+                            ("Hoodie", "Hoodie"),
+                            ("Jacket", "Jacket"),
+                            ("Jeans", "Jeans"),
+                            ("Polo shirt", "Polo shirt"),
+                            ("Pullover", "Pullover"),
+                            ("Shirt", "Shirt"),
+                            ("Shorts", "Shorts"),
+                            ("Sleeveless shirt", "Sleeveless shirt"),
+                            ("Suit", "Suit"),
+                            ("Tshirt", "Tshirt"),
+                            ("Waistcoat", "Waistcoat"),
+                            ("Coat", "Coat"),
+                            ("Dress", "Dress"),
+                            ("Kurta", "Kurta"),
+                            ("Saree", "Saree"),
+                            ("Sheath dress", "Sheath dress"),
+                            ("Shrug", "Shrug"),
+                            ("Skirt", "Skirt"),
+                            ("Sweater", "Sweater"),
+                            ("Tops", "Tops"),
+                        ],
+                        max_length=30,
+                    ),
+                ),
+                (
+                    "gender",
+                    models.CharField(
+                        choices=[("M", "Men"), ("W", "Women")], max_length=15
+                    ),
+                ),
             ],
         ),
         migrations.AlterField(
-            model_name='cloth',
-            name='category',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='clothes.category'),
+            model_name="cloth",
+            name="category",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.PROTECT, to="clothes.category"
+            ),
         ),
     ]

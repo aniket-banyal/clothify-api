@@ -6,14 +6,16 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('clothes', '0009_image'),
+        ("clothes", "0009_image"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='cloth',
-            name='cover_img_url',
-            field=models.URLField(default='https://4.imimg.com/data4/AQ/FS/MY-32578879/over-coat-500x500.jpg'),
+            model_name="cloth",
+            name="cover_img_url",
+            field=models.URLField(
+                default="https://4.imimg.com/data4/AQ/FS/MY-32578879/over-coat-500x500.jpg"
+            ),
             preserve_default=False,
         ),
     ]

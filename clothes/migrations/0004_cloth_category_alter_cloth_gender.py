@@ -6,19 +6,50 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('clothes', '0003_cloth_color'),
+        ("clothes", "0003_cloth_color"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='cloth',
-            name='category',
-            field=models.CharField(choices=[('Suit', 'Suit'), ('Shrug', 'Shrug'), ('Tshirt', 'Tshirt'), ('Formal Trouser', 'Formal Trouser'), ('Waistcoat', 'Waistcoat'), ('Hoodie', 'Hoodie'), ('Casual Trouser', 'Casual Trouser'), ('Shorts', 'Shorts'), ('Skirt', 'Skirt'), ('Shirt', 'Shirt'), ('Saree', 'Saree'), ('Kurta', 'Kurta'), ('Tops', 'Tops'), ('Cardigan', 'Cardigan'), ('Sleeveless shirt', 'Sleeveless shirt'), ('Polo shirt', 'Polo shirt'), ('Sheath dress', 'Sheath dress'), ('Jeans', 'Jeans'), ('Blazer', 'Blazer'), ('Pullover', 'Pullover'), ('Jacket', 'Jacket'), ('Dress', 'Dress'), ('Coat', 'Coat'), ('Sweater', 'Sweater')], default='Kurta', max_length=30),
+            model_name="cloth",
+            name="category",
+            field=models.CharField(
+                choices=[
+                    ("Suit", "Suit"),
+                    ("Shrug", "Shrug"),
+                    ("Tshirt", "Tshirt"),
+                    ("Formal Trouser", "Formal Trouser"),
+                    ("Waistcoat", "Waistcoat"),
+                    ("Hoodie", "Hoodie"),
+                    ("Casual Trouser", "Casual Trouser"),
+                    ("Shorts", "Shorts"),
+                    ("Skirt", "Skirt"),
+                    ("Shirt", "Shirt"),
+                    ("Saree", "Saree"),
+                    ("Kurta", "Kurta"),
+                    ("Tops", "Tops"),
+                    ("Cardigan", "Cardigan"),
+                    ("Sleeveless shirt", "Sleeveless shirt"),
+                    ("Polo shirt", "Polo shirt"),
+                    ("Sheath dress", "Sheath dress"),
+                    ("Jeans", "Jeans"),
+                    ("Blazer", "Blazer"),
+                    ("Pullover", "Pullover"),
+                    ("Jacket", "Jacket"),
+                    ("Dress", "Dress"),
+                    ("Coat", "Coat"),
+                    ("Sweater", "Sweater"),
+                ],
+                default="Kurta",
+                max_length=30,
+            ),
             preserve_default=False,
         ),
         migrations.AlterField(
-            model_name='cloth',
-            name='gender',
-            field=models.CharField(choices=[('M', 'Men'), ('W', 'Women')], max_length=15),
+            model_name="cloth",
+            name="gender",
+            field=models.CharField(
+                choices=[("M", "Men"), ("W", "Women")], max_length=15
+            ),
         ),
     ]
