@@ -9,6 +9,7 @@ from clothes.models import Category, Cloth
 from clothes.serializers import (
     CategoryDetailSerializer,
     ClothCreateSerializer,
+    ClothDetailSerializer,
     ClothSerializer,
 )
 
@@ -46,6 +47,19 @@ class ClothesList(generics.ListCreateAPIView):
         cover_img_url = uploadImage(image=image, name=name)
 
         serializer.save(owner=self.request.user, cover_img_url=cover_img_url)
+
+
+class ClothesView(generics.RetrieveAPIView):
+    permission_classes = [IsAuthenticatedOrReadOnly]
+
+    queryset = Cloth.objects.all()
+
+    lookup_field = "pk"
+
+    def get_serializer_class(self):
+        method = self.request.method
+        if method == "GET":
+            return ClothDetailSerializer
 
 
 class CategoryList(generics.ListAPIView):

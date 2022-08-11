@@ -41,11 +41,9 @@ class ClothSerializer(serializers.ModelSerializer):
 
 
 class ClothDetailSerializer(serializers.ModelSerializer):
-
     size = serializers.CharField(source="get_size_display")
     color = serializers.CharField(source="get_color_display")
     category = CategorySerializer()
-    images = serializers.SerializerMethodField()
 
     class Meta:
         model = Cloth
@@ -58,6 +56,7 @@ class ClothDetailSerializer(serializers.ModelSerializer):
             "color",
             "category",
             "owner",
+            "cover_img_url",
         )
 
     def get_images(self, cloth: Cloth):
