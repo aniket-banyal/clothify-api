@@ -1,9 +1,9 @@
-import random
 import os
+import random
 import string
+
 from django.apps import apps
 from django.conf import settings
-
 
 project_name = "core"
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", f"{project_name}.settings")
@@ -17,7 +17,9 @@ def create_clothes(n, color=None):
 
     user = User.objects.get(email="aman@gmail.com", password="aman")
 
-    names = ["Kurta", "Saree", "Jacket", "Sweater", "Tshirt", "Shirts"]
+    names = [
+        x[0] for x in Category.MEN_CATEGORY_CHOICES + Category.WOMEN_CATEGORY_CHOICES
+    ]
     categories = list(Category.objects.all())
     cover_img_urls = [
         "https://res.cloudinary.com/dummy26/image/upload/v1659251819/tshirt.jpgTshirt_Navy%20blue%20tshirt_900_300_M_Black_Blazer%20-%20M.jpg",
@@ -31,7 +33,14 @@ def create_clothes(n, color=None):
     for _ in range(n):
         Cloth.objects.create(
             name=random.sample(names, 1)[0],
-            description="".join(random.choices(string.ascii_uppercase + " ", k=12)),
+            description=" ".join(
+                [
+                    "".join(
+                        random.choices(string.ascii_letters, k=random.randrange(2, 10))
+                    )
+                    for _ in range(random.randrange(30, 100))
+                ]
+            ),
             retail_price=random.randint(1000, 2000),
             sell_price=random.randint(200, 800),
             size=random.sample([x[0] for x in Cloth.SIZE_CHOICES], 1)[0],
@@ -46,7 +55,7 @@ def create_clothes(n, color=None):
     print("Done")
 
 
-n = 20
+n = 60
 # color = 'Blue'
 # create_clothes(n, color=color)
 create_clothes(n)
