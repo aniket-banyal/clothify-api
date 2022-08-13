@@ -6,7 +6,7 @@ from .models import Category, Cloth, Image
 class ImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = Image
-        fields = ("url",)
+        fields = ("url", "cloth")
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -43,7 +43,9 @@ class ClothSerializer(serializers.ModelSerializer):
 class ClothDetailSerializer(serializers.ModelSerializer):
     size = serializers.CharField(source="get_size_display")
     color = serializers.CharField(source="get_color_display")
-    category = CategorySerializer()
+    images = serializers.SerializerMethodField("get_images")
+    category_name = serializers.CharField(source="category.name")
+    gender = serializers.CharField(source="category.gender")
 
     class Meta:
         model = Cloth
@@ -54,9 +56,11 @@ class ClothDetailSerializer(serializers.ModelSerializer):
             "sell_price",
             "size",
             "color",
-            "category",
+            "category_name",
+            "gender",
             "owner",
             "cover_img_url",
+            "images",
         )
 
     def get_images(self, cloth: Cloth):
@@ -68,6 +72,7 @@ class ClothCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cloth
         fields = (
+            "id",
             "name",
             "description",
             "retail_price",
@@ -77,4 +82,7 @@ class ClothCreateSerializer(serializers.ModelSerializer):
             "category",
             "cover_img_url",
         )
-        read_only_fields = ("cover_img_url",)
+        read_only_fields = (
+            "id",
+            "cover_img_url",
+        )
