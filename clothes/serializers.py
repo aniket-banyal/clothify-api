@@ -26,8 +26,6 @@ class CategoryDetailSerializer(serializers.ModelSerializer):
 
 
 class ClothSerializer(serializers.ModelSerializer):
-    category = CategorySerializer()
-
     class Meta:
         model = Cloth
         fields = (
@@ -36,7 +34,6 @@ class ClothSerializer(serializers.ModelSerializer):
             "retail_price",
             "sell_price",
             "cover_img_url",
-            "category",
         )
 
 
@@ -56,6 +53,7 @@ class ClothDetailSerializer(serializers.ModelSerializer):
             "sell_price",
             "size",
             "color",
+            "material",
             "category_name",
             "gender",
             "owner",
@@ -79,6 +77,7 @@ class ClothCreateSerializer(serializers.ModelSerializer):
             "sell_price",
             "size",
             "color",
+            "material",
             "category",
             "cover_img_url",
         )

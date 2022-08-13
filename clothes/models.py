@@ -151,6 +151,26 @@ class Cloth(models.Model):
         (YELLOW, YELLOW),
     ]
 
+    CHIFFON = "Chiffon"
+    COTTON = "Cotton"
+    CREPE = "Crepe"
+    DENIM = "Denim"
+    LACE = "Lace"
+    LEATHER = "Leather"
+    LINEN = "Linen"
+    SATIN = "Satin"
+
+    MATERIAL_CHOICES = [
+        (CHIFFON, CHIFFON),
+        (COTTON, COTTON),
+        (CREPE, CREPE),
+        (DENIM, DENIM),
+        (LACE, LACE),
+        (LEATHER, LEATHER),
+        (LINEN, LINEN),
+        (SATIN, SATIN),
+    ]
+
     name = models.CharField(max_length=200)
     description = models.TextField()
     retail_price = models.PositiveIntegerField(
@@ -159,6 +179,7 @@ class Cloth(models.Model):
     sell_price = models.PositiveIntegerField(validators=[MinValueValidator(MIN_PRICE)])
     size = models.CharField(max_length=10, choices=SIZE_CHOICES)
     color = models.CharField(max_length=20, choices=COLOR_CHOICES)
+    material = models.CharField(max_length=30, choices=MATERIAL_CHOICES)
     category = models.ForeignKey(Category, on_delete=models.PROTECT)
     owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     cover_img_url = models.URLField()
