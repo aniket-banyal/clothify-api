@@ -1,5 +1,5 @@
 from django.conf import settings
-from django.core.validators import MinValueValidator
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 
 
@@ -94,6 +94,7 @@ class Category(models.Model):
 
 class Cloth(models.Model):
     MIN_PRICE = 1
+    MAX_PRICE = 10000
 
     EXTRA_EXTRA_SMALL = "XXS"
     EXTRA_SMALL = "XS"
@@ -174,9 +175,11 @@ class Cloth(models.Model):
     name = models.CharField(max_length=200)
     description = models.TextField()
     retail_price = models.PositiveIntegerField(
-        validators=[MinValueValidator(MIN_PRICE)]
+        validators=[MinValueValidator(MIN_PRICE), MaxValueValidator(MAX_PRICE)]
     )
-    sell_price = models.PositiveIntegerField(validators=[MinValueValidator(MIN_PRICE)])
+    sell_price = models.PositiveIntegerField(
+        validators=[MinValueValidator(MIN_PRICE), MaxValueValidator(MAX_PRICE)]
+    )
     size = models.CharField(max_length=10, choices=SIZE_CHOICES)
     color = models.CharField(max_length=20, choices=COLOR_CHOICES)
     material = models.CharField(max_length=30, choices=MATERIAL_CHOICES)

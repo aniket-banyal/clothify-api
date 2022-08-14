@@ -7,6 +7,7 @@ from rest_framework.pagination import PageNumberPagination
 from rest_framework.parsers import FormParser, MultiPartParser
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
+from rest_framework.views import APIView
 
 from clothes.models import Category, Cloth
 from clothes.serializers import (
@@ -121,3 +122,13 @@ class SizeList(generics.ListAPIView):
     def list(self, request, *args, **kwargs):
         sizes = [size_choices[0] for size_choices in Cloth.SIZE_CHOICES]
         return Response(data=sizes)
+
+
+class SellPriceRangeView(APIView):
+    permission_classes = [IsAuthenticatedOrReadOnly]
+
+    def get(self, request, *args, **kwargs):
+        min_price = Cloth.MIN_PRICE
+        max_price = Cloth.MAX_PRICE
+
+        return Response(data={"min_price": min_price, "max_price": max_price})
