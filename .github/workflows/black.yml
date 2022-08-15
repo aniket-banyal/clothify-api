@@ -14,4 +14,4 @@ jobs:
       - uses: actions/checkout@v2
       - uses: psf/black@stable
         with:
-          args: ". --check --exclude migrations"
+          black_args: ". --exclude migrations"
