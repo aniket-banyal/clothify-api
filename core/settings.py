@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     "api",
     "clothes",
     "users",
+    "cart",
 ]
 
 MIDDLEWARE = [
