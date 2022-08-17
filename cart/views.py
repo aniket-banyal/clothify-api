@@ -11,7 +11,7 @@ class CartItemsList(generics.ListCreateAPIView):
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
-        return CartItem.objects.filter(cart__user=self.request.user)
+        return self.request.user.cart.get_items()
 
     def get_serializer_class(self):
         method = self.request.method
@@ -39,4 +39,4 @@ class CartItemsView(generics.DestroyAPIView):
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
-        return CartItem.objects.filter(cart__user=self.request.user)
+        return self.request.user.cart.get_items()
