@@ -10,4 +10,5 @@ urlpatterns = [
     path("sizes", views.SizeList.as_view()),
     path("price-range", views.SellPriceRangeView.as_view()),
     path("cart", views.CartItemsList.as_view()),
+    path("cart-items/<int:pk>", views.CartItemsView.as_view()),
 ]

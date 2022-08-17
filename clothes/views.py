@@ -163,3 +163,10 @@ class CartItemsList(generics.ListCreateAPIView):
 
     def perform_create(self, serializer):
         serializer.save(cart=self.request.user.cart)
+
+
+class CartItemsView(generics.DestroyAPIView):
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        return CartItem.objects.filter(cart__user=self.request.user)
