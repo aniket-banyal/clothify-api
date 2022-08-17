@@ -1,16 +1,19 @@
 import random
 import string
 
+from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import generics
+from rest_framework import generics, status
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.parsers import FormParser, MultiPartParser
-from rest_framework.permissions import IsAuthenticatedOrReadOnly
+from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from clothes.models import Category, Cloth
+from clothes.models import CartItem, Category, Cloth
 from clothes.serializers import (
+    CartItemCreateSerializer,
+    CartItemSerializer,
     CategoryDetailSerializer,
     ClothCreateSerializer,
     ClothDetailSerializer,
@@ -132,3 +135,31 @@ class SellPriceRangeView(APIView):
         max_price = Cloth.MAX_PRICE
 
         return Response(data={"min_price": min_price, "max_price": max_price})
+
+
+class CartItemsList(generics.ListCreateAPIView):
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        return CartItem.objects.filter(cart__user=self.request.user)
+
+    def get_serializer_class(self):
+        method = self.request.method
+        if method == "GET":
+            return CartItemSerializer
+        return CartItemCreateSerializer
+
+    def create(self, request, *args, **kwargs):
+        cart = request.user.cart
+        cloth = get_object_or_404(Cloth, pk=request.data["cloth"])
+
+        if CartItem.objects.filter(cart=cart, cloth=cloth).exists():
+            return Response(
+                data={"error": "Cloth is already present in your cart"},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        return super().create(request, *args, **kwargs)
+
+    def perform_create(self, serializer):
+        serializer.save(cart=self.request.user.cart)
