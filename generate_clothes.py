@@ -15,7 +15,7 @@ def create_clothes(n, color=None):
     from clothes.models import Category, Cloth
     from users.models import User
 
-    user = User.objects.get(email="aman@gmail.com", password="aman")
+    user = User.objects.get(pk=2)
 
     names = [
         x[0] for x in Category.MEN_CATEGORY_CHOICES + Category.WOMEN_CATEGORY_CHOICES
