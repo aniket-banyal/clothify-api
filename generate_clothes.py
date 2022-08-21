@@ -17,9 +17,6 @@ def create_clothes(n, color=None):
 
     user = User.objects.get(pk=2)
 
-    names = [
-        x[0] for x in Category.MEN_CATEGORY_CHOICES + Category.WOMEN_CATEGORY_CHOICES
-    ]
     categories = list(Category.objects.all())
     cover_img_urls = [
         "https://res.cloudinary.com/dummy26/image/upload/v1659251819/tshirt.jpgTshirt_Navy%20blue%20tshirt_900_300_M_Black_Blazer%20-%20M.jpg",
@@ -32,7 +29,9 @@ def create_clothes(n, color=None):
 
     for _ in range(n):
         Cloth.objects.create(
-            name=random.sample(names, 1)[0],
+            name="".join(
+                random.choices(string.ascii_letters, k=random.randrange(5, 10))
+            ),
             description=" ".join(
                 [
                     "".join(
@@ -55,7 +54,7 @@ def create_clothes(n, color=None):
     print("Done")
 
 
-n = 60
+n = 1
 # color = 'Blue'
 # create_clothes(n, color=color)
 create_clothes(n)

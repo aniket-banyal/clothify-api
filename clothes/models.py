@@ -12,77 +12,7 @@ class Category(models.Model):
         (WOMEN, "Women"),
     ]
 
-    BLAZER = "Blazer"
-    CARDIGAN = "Cardigan"
-    CASUAL_TROUSER = "Casual Trouser"
-    FORMAL_TROUSER = "Formal Trouser"
-    HOODIE = "Hoodie"
-    JACKET = "Jacket"
-    JEANS = "Jeans"
-    POLO_SHIRT = "Polo shirt"
-    PULLOVER = "Pullover"
-    SHIRT = "Shirt"
-    SHORTS = "Shorts"
-    SLEEVELESS_SHIRT = "Sleeveless shirt"
-    SUIT = "Suit"
-    TSHIRT = "Tshirt"
-    WAISTCOAT = "Waistcoat"
-
-    MEN_CATEGORY_CHOICES = [
-        (BLAZER, BLAZER),
-        (CARDIGAN, CARDIGAN),
-        (CASUAL_TROUSER, CASUAL_TROUSER),
-        (FORMAL_TROUSER, FORMAL_TROUSER),
-        (HOODIE, HOODIE),
-        (JACKET, JACKET),
-        (JEANS, JEANS),
-        (POLO_SHIRT, POLO_SHIRT),
-        (PULLOVER, PULLOVER),
-        (SHIRT, SHIRT),
-        (SHORTS, SHORTS),
-        (SLEEVELESS_SHIRT, SLEEVELESS_SHIRT),
-        (SUIT, SUIT),
-        (TSHIRT, TSHIRT),
-        (WAISTCOAT, WAISTCOAT),
-    ]
-
-    COAT = "Coat"
-    DRESS = "Dress"
-    HOODIE = "Hoodie"
-    JACKET = "Jacket"
-    JEANS = "Jeans"
-    KURTA = "Kurta"
-    SAREE = "Saree"
-    SHEATH_DRESS = "Sheath dress"
-    SHORTS = "Shorts"
-    SHRUG = "Shrug"
-    SKIRT = "Skirt"
-    SUIT = "Suit"
-    SWEATER = "Sweater"
-    TOPS = "Tops"
-    TSHIRT = "Tshirt"
-
-    WOMEN_CATEGORY_CHOICES = [
-        (COAT, COAT),
-        (DRESS, DRESS),
-        (HOODIE, HOODIE),
-        (JACKET, JACKET),
-        (JEANS, JEANS),
-        (KURTA, KURTA),
-        (SAREE, SAREE),
-        (SHEATH_DRESS, SHEATH_DRESS),
-        (SHORTS, SHORTS),
-        (SHRUG, SHRUG),
-        (SKIRT, SKIRT),
-        (SUIT, SUIT),
-        (SWEATER, SWEATER),
-        (TOPS, TOPS),
-        (TSHIRT, TSHIRT),
-    ]
-
-    NAME_CHOICES = list(dict.fromkeys(MEN_CATEGORY_CHOICES + WOMEN_CATEGORY_CHOICES))
-
-    name = models.CharField(max_length=30, choices=NAME_CHOICES)
+    name = models.CharField(max_length=30)
     gender = models.CharField(max_length=15, choices=GENDER_CHOICES)
 
     class Meta:

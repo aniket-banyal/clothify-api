@@ -1,0 +1,274 @@
+[
+    {
+        "model": "clothes.category",
+        "pk": 1,
+        "fields": {
+            "name": "Blazer",
+            "gender": "M"
+        }
+    },
+    {
+        "model": "clothes.category",
+        "pk": 2,
+        "fields": {
+            "name": "Cardigan",
+            "gender": "M"
+        }
+    },
+    {
+        "model": "clothes.category",
+        "pk": 3,
+        "fields": {
+            "name": "Casual Trouser",
+            "gender": "M"
+        }
+    },
+    {
+        "model": "clothes.category",
+        "pk": 4,
+        "fields": {
+            "name": "Saree",
+            "gender": "W"
+        }
+    },
+    {
+        "model": "clothes.category",
+        "pk": 5,
+        "fields": {
+            "name": "Tops",
+            "gender": "W"
+        }
+    },
+    {
+        "model": "clothes.category",
+        "pk": 6,
+        "fields": {
+            "name": "Tshirt",
+            "gender": "M"
+        }
+    },
+    {
+        "model": "clothes.category",
+        "pk": 7,
+        "fields": {
+            "name": "Formal Trouser",
+            "gender": "M"
+        }
+    },
+    {
+        "model": "clothes.category",
+        "pk": 8,
+        "fields": {
+            "name": "Waistcoat",
+            "gender": "M"
+        }
+    },
+    {
+        "model": "clothes.category",
+        "pk": 9,
+        "fields": {
+            "name": "Skirt",
+            "gender": "W"
+        }
+    },
+    {
+        "model": "clothes.category",
+        "pk": 10,
+        "fields": {
+            "name": "Jacket",
+            "gender": "M"
+        }
+    },
+    {
+        "model": "clothes.category",
+        "pk": 11,
+        "fields": {
+            "name": "Sleeveless shirt",
+            "gender": "M"
+        }
+    },
+    {
+        "model": "clothes.category",
+        "pk": 12,
+        "fields": {
+            "name": "Shrug",
+            "gender": "W"
+        }
+    },
+    {
+        "model": "clothes.category",
+        "pk": 13,
+        "fields": {
+            "name": "Sheath dress",
+            "gender": "W"
+        }
+    },
+    {
+        "model": "clothes.category",
+        "pk": 14,
+        "fields": {
+            "name": "Coat",
+            "gender": "M"
+        }
+    },
+    {
+        "model": "clothes.category",
+        "pk": 15,
+        "fields": {
+            "name": "Pullover",
+            "gender": "M"
+        }
+    },
+    {
+        "model": "clothes.category",
+        "pk": 16,
+        "fields": {
+            "name": "Kurta",
+            "gender": "W"
+        }
+    },
+    {
+        "model": "clothes.category",
+        "pk": 17,
+        "fields": {
+            "name": "Sweater",
+            "gender": "W"
+        }
+    },
+    {
+        "model": "clothes.category",
+        "pk": 18,
+        "fields": {
+            "name": "Shorts",
+            "gender": "W"
+        }
+    },
+    {
+        "model": "clothes.category",
+        "pk": 19,
+        "fields": {
+            "name": "Suit",
+            "gender": "W"
+        }
+    },
+    {
+        "model": "clothes.category",
+        "pk": 20,
+        "fields": {
+            "name": "Kurta",
+            "gender": "M"
+        }
+    },
+    {
+        "model": "clothes.category",
+        "pk": 21,
+        "fields": {
+            "name": "Hoodie",
+            "gender": "M"
+        }
+    },
+    {
+        "model": "clothes.category",
+        "pk": 22,
+        "fields": {
+            "name": "Jacket",
+            "gender": "W"
+        }
+    },
+    {
+        "model": "clothes.category",
+        "pk": 23,
+        "fields": {
+            "name": "Jeans",
+            "gender": "M"
+        }
+    },
+    {
+        "model": "clothes.category",
+        "pk": 24,
+        "fields": {
+            "name": "Jeans",
+            "gender": "W"
+        }
+    },
+    {
+        "model": "clothes.category",
+        "pk": 25,
+        "fields": {
+            "name": "Polo shirt",
+            "gender": "M"
+        }
+    },
+    {
+        "model": "clothes.category",
+        "pk": 26,
+        "fields": {
+            "name": "Shirt",
+            "gender": "M"
+        }
+    },
+    {
+        "model": "clothes.category",
+        "pk": 27,
+        "fields": {
+            "name": "Shirt",
+            "gender": "W"
+        }
+    },
+    {
+        "model": "clothes.category",
+        "pk": 28,
+        "fields": {
+            "name": "Shorts",
+            "gender": "M"
+        }
+    },
+    {
+        "model": "clothes.category",
+        "pk": 29,
+        "fields": {
+            "name": "Suit",
+            "gender": "M"
+        }
+    },
+    {
+        "model": "clothes.category",
+        "pk": 30,
+        "fields": {
+            "name": "Coat",
+            "gender": "W"
+        }
+    },
+    {
+        "model": "clothes.category",
+        "pk": 31,
+        "fields": {
+            "name": "Dress",
+            "gender": "W"
+        }
+    },
+    {
+        "model": "clothes.category",
+        "pk": 32,
+        "fields": {
+            "name": "Hoodie",
+            "gender": "W"
+        }
+    },
+    {
+        "model": "clothes.category",
+        "pk": 33,
+        "fields": {
+            "name": "Jacket",
+            "gender": "W"
+        }
+    },
+    {
+        "model": "clothes.category",
+        "pk": 34,
+        "fields": {
+            "name": "Tshirt",
+            "gender": "W"
+        }
+    }
+]
