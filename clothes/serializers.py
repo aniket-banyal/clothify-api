@@ -83,3 +83,13 @@ class ClothCreateSerializer(serializers.ModelSerializer):
             "id",
             "cover_img_url",
         )
+
+
+class ColorSerializer(serializers.Serializer):
+    name = serializers.CharField(max_length=200)
+    count = serializers.IntegerField(min_value=0)
+
+
+class SizeSerializer(serializers.Serializer):
+    name = serializers.CharField(max_length=200)
+    count = serializers.IntegerField(min_value=0)

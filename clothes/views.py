@@ -15,7 +15,9 @@ from clothes.serializers import (
     ClothCreateSerializer,
     ClothDetailSerializer,
     ClothSerializer,
+    ColorSerializer,
     ImageSerializer,
+    SizeSerializer,
 )
 
 from .filters import ClothFilter
@@ -111,8 +113,10 @@ class CategoryList(generics.ListAPIView):
 class ColorList(generics.ListAPIView):
     permission_classes = [IsAuthenticatedOrReadOnly]
 
-    def list(self, request, *args, **kwargs):
-        colors = [
+    serializer_class = ColorSerializer
+
+    def get_queryset(self):
+        return [
             {
                 "name": color_choices[0],
                 "count": Cloth.objects.filter(color=color_choices[0]).count(),
@@ -120,22 +124,20 @@ class ColorList(generics.ListAPIView):
             for color_choices in Cloth.COLOR_CHOICES
         ]
 
-        return Response(data=colors)
-
 
 class SizeList(generics.ListAPIView):
     permission_classes = [IsAuthenticatedOrReadOnly]
 
-    def list(self, request, *args, **kwargs):
-        sizes = [
+    serializer_class = SizeSerializer
+
+    def get_queryset(self):
+        return [
             {
                 "name": size_choices[0],
                 "count": Cloth.objects.filter(size=size_choices[0]).count(),
             }
             for size_choices in Cloth.SIZE_CHOICES
         ]
-
-        return Response(data=sizes)
 
 
 class SellPriceRangeView(APIView):
