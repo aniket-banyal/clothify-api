@@ -18,6 +18,9 @@ class Category(models.Model):
     class Meta:
         verbose_name_plural = "categories"
 
+    def get_clothes_count(self) -> int:
+        return self.cloth_set.all().count()
+
     def __str__(self):
         return f"{self.name} - {self.gender}"
 

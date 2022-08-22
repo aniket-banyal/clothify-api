@@ -112,7 +112,14 @@ class ColorList(generics.ListAPIView):
     permission_classes = [IsAuthenticatedOrReadOnly]
 
     def list(self, request, *args, **kwargs):
-        colors = [color_choices[0] for color_choices in Cloth.COLOR_CHOICES]
+        colors = [
+            {
+                "name": color_choices[0],
+                "count": Cloth.objects.filter(color=color_choices[0]).count(),
+            }
+            for color_choices in Cloth.COLOR_CHOICES
+        ]
+
         return Response(data=colors)
 
 
@@ -120,7 +127,14 @@ class SizeList(generics.ListAPIView):
     permission_classes = [IsAuthenticatedOrReadOnly]
 
     def list(self, request, *args, **kwargs):
-        sizes = [size_choices[0] for size_choices in Cloth.SIZE_CHOICES]
+        sizes = [
+            {
+                "name": size_choices[0],
+                "count": Cloth.objects.filter(size=size_choices[0]).count(),
+            }
+            for size_choices in Cloth.SIZE_CHOICES
+        ]
+
         return Response(data=sizes)
 
 

@@ -10,19 +10,17 @@ class ImageSerializer(serializers.ModelSerializer):
 
 
 class CategorySerializer(serializers.ModelSerializer):
-    name = serializers.CharField(source="get_name_display")
-
     class Meta:
         model = Category
         fields = ("id", "name", "gender")
 
 
 class CategoryDetailSerializer(serializers.ModelSerializer):
-    name = serializers.CharField(source="get_name_display")
+    count = serializers.IntegerField(source="get_clothes_count")
 
     class Meta:
         model = Category
-        fields = ("id", "name", "gender")  # add image also
+        fields = ("id", "name", "gender", "count")  # add image also
 
 
 class ClothSerializer(serializers.ModelSerializer):
