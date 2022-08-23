@@ -3,6 +3,7 @@ import string
 
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import generics
+from rest_framework.exceptions import ValidationError
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.parsers import FormParser, MultiPartParser
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
@@ -116,10 +117,21 @@ class ColorList(generics.ListAPIView):
     serializer_class = ColorSerializer
 
     def get_queryset(self):
+        gender = self.request.query_params.get("gender", "")
+        if gender != "" and gender not in [
+            gender_choices[0] for gender_choices in Category.GENDER_CHOICES
+        ]:
+            raise ValidationError(detail={"error:": "Invalid gender"})
+
+        def get_cloth_count_for_color(color):
+            if gender == "":
+                return Cloth.objects.filter(color=color).count()
+            return Cloth.objects.filter(color=color, category__gender=gender).count()
+
         return [
             {
                 "name": color_choices[0],
-                "count": Cloth.objects.filter(color=color_choices[0]).count(),
+                "count": get_cloth_count_for_color(color_choices[0]),
             }
             for color_choices in Cloth.COLOR_CHOICES
         ]
@@ -131,10 +143,21 @@ class SizeList(generics.ListAPIView):
     serializer_class = SizeSerializer
 
     def get_queryset(self):
+        gender = self.request.query_params.get("gender", "")
+        if gender != "" and gender not in [
+            gender_choices[0] for gender_choices in Category.GENDER_CHOICES
+        ]:
+            raise ValidationError(detail={"error:": "Invalid gender"})
+
+        def get_cloth_count_for_size(size):
+            if gender == "":
+                return Cloth.objects.filter(size=size).count()
+            return Cloth.objects.filter(size=size, category__gender=gender).count()
+
         return [
             {
                 "name": size_choices[0],
-                "count": Cloth.objects.filter(size=size_choices[0]).count(),
+                "count": get_cloth_count_for_size(size_choices[0]),
             }
             for size_choices in Cloth.SIZE_CHOICES
         ]
